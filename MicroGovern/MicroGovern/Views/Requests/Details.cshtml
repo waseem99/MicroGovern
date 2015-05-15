@@ -1,0 +1,58 @@
+﻿@model MicroGovern.Models.Services_Management.Request_mng.Request
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Request</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RequestIniated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RequestIniated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Details)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Details)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MinRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MinRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaxRate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
