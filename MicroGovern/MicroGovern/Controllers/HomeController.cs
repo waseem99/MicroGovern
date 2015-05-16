@@ -26,5 +26,9 @@ namespace MicroGovern.Controllers
 
             return View();
         }
+        public ActionResult ProfilePage()
+        {
+            return View();
+        }
     }
 }
