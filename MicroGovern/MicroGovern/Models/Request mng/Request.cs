@@ -11,8 +11,8 @@ namespace MicroGovern.Models.Services_Management.Request_mng
     public class Request
     {
 
-        [Key]
-        public int ID { get; set; }
+        
+        [Key] public int ID { get; set; }
 
         [Required]
         [MinLength(10)]
