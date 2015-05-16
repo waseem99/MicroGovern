@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
+using System.Collections;
 
 namespace MicroGovern.Models.Services_Management.Request_mng
 {
     public class Request
     {
-        public Request ()
-        {
-
-        }
 
         public int ID { get; set; }
         public string Title { get; set; }
@@ -19,6 +16,17 @@ namespace MicroGovern.Models.Services_Management.Request_mng
         public string Details { get; set; }
         public decimal MinRate { get; set; }
         public decimal MaxRate { get; set; }
+        //public ArrayList <Service> CategList { get; set; }
+        public int NumDays;
+        public int StartTime;
+        public int EndTime;
+        public string PicURL;
+        public Boolean BidsVisibility;
+
+        public Request()
+        {
+
+        }
     }
 
     public class RequestDBContext : DbContext
