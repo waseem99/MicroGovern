@@ -29,6 +29,7 @@ namespace MicroGovern.Models.Services_Management.Request_mng
         }
     }
 
+    //Database Model
     public class RequestDBContext : DbContext
     {
         public DbSet<Request> requests { get; set; }
