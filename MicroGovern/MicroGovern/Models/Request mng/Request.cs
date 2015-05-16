@@ -6,13 +6,13 @@ using System.Data.Entity;
 using System.Collections;
 using System.ComponentModel.DataAnnotations;
 
-namespace MicroGovern.Models.Services_Management.Request_mng
+namespace MicroGovern.Models.Services_Management
 {
     public class Request
     {
 
-        [Key]
-        public int ID { get; set; }
+        
+        [Key] public int ID { get; set; }
 
         [Required]
         [MinLength(10)]

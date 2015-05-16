@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using MicroGovern.Models.Services_Management.Request_mng;
+using MicroGovern.Models.Services_Management;
 
 namespace MicroGovern.Controllers.Services_Management.Request_mng
 {
