@@ -213,6 +213,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Profile\ProfileViewModel.cs" />
     <Compile Include="Models\Request mng\Request.cs" />
     <Compile Include="Models\Services mng\Service.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
