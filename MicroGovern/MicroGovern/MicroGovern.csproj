@@ -165,7 +165,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\Services Management\Request mng\RequestsController.cs" />
-    <Compile Include="Controllers\Services Management\Services mng\ServicesController.cs" />
+    <Compile Include="Controllers\Services Management\Service mng\ServicesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
