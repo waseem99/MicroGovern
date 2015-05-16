@@ -151,7 +151,20 @@ namespace MicroGovern.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email , PhoneNumber = model.Phone };
+                var user = new ApplicationUser {
+                    UserName = model.Email,
+                    Email = model.Email ,
+                    PhoneNumber = model.Phone,
+                    BirthDate =model.BirthDate,
+                    PrimaryRole = model.PrimaryRole,
+                    Country = model.Country,
+                    State = model.State,
+                    City = model.City,
+                    Address = model.Address,
+                    AccountType = model.AccountType,
+                    RegisteredDate = DateTime.Now,
+                    FullName = model.FullName
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
