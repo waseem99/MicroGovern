@@ -16,12 +16,12 @@ namespace MicroGovern.Models.Services_Management.Request_mng
         public string Details { get; set; }
         public decimal MinRate { get; set; }
         public decimal MaxRate { get; set; }
-        //public ArrayList <Service> CategList { get; set; }
         public int NumDays;
         public int StartTime;
         public int EndTime;
         public string PicURL;
         public Boolean BidsVisibility;
+        //public ArrayList <Service> CategList { get; set; }
 
         public Request()
         {
