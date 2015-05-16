@@ -26,6 +26,18 @@
         <th>
             @Html.DisplayNameFor(model => model.MaxRate)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkDueDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkableTimeRange)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PicURL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BidsVisibility)
+        </th>
         <th></th>
     </tr>
 
@@ -45,6 +57,18 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.MaxRate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkDueDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkableTimeRange)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PicURL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BidsVisibility)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |

@@ -46,7 +46,7 @@ namespace MicroGovern.Controllers.Services_Management.Request_mng
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Title,RequestIniated,Details,MinRate,MaxRate")] Request request)
+        public ActionResult Create([Bind(Include = "ID,Title,RequestIniated,Details,MinRate,MaxRate,WorkDueDate,WorkableTimeRange,PicURL,BidsVisibility")] Request request)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace MicroGovern.Controllers.Services_Management.Request_mng
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Title,RequestIniated,Details,MinRate,MaxRate")] Request request)
+        public ActionResult Edit([Bind(Include = "ID,Title,RequestIniated,Details,MinRate,MaxRate,WorkDueDate,WorkableTimeRange,PicURL,BidsVisibility")] Request request)
         {
             if (ModelState.IsValid)
             {
