@@ -22,6 +22,8 @@ namespace MicroGovern.Models.Services_Management
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DateAdded { get; set; }
 
+        //ICON URL
+
         [Required]
         [MinLength(100)]
         public string Details { get; set; }

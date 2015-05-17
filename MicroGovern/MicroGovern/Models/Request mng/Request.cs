@@ -10,8 +10,7 @@ namespace MicroGovern.Models.Services_Management
 {
     public class Request
     {
-
-        
+                
         [Key] public int ID { get; set; }
 
         [Required]

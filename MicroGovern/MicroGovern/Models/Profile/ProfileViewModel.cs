@@ -9,4 +9,15 @@ namespace MicroGovern.Models.Profile
     {
 
     }
+
+    public class UserProfileModel
+    {
+        public string userID;
+        public float ratings;
+        public string profilePhotoURL;
+        //MY SERVICES LIST
+        public float ratePerHr;
+        public string ServicesCompleted; //OR HISTORY LIST
+        public string CurrentActiveServices;
+    }
 }
