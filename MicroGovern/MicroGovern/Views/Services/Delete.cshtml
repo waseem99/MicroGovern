@@ -52,13 +52,20 @@
         </dd>
 
     </dl>
-
-    @using (Html.BeginForm()) {
+        @using (Html.BeginForm("Delete", "Services", new { id=Model.ID , parentServiceID = ViewBag.parentServiceID }))
+        {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            @if (ViewBag.parentServiceID >= 0)
+            {
+                @Html.ActionLink("Back to List", "Details", new { id = ViewBag.parentServiceID })
+            }
+            else
+            {
+                @Html.ActionLink("Back to List", "Index")
+            }
         </div>
     }
 </div>

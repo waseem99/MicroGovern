@@ -38,5 +38,7 @@ namespace MicroGovern.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<MicroGovern.Models.Services_mng.Service> Services { get; set; }
     }
 }

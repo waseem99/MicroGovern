@@ -9,7 +9,7 @@ namespace MicroGovern.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "MicroGovern.Models.ApplicationDbContext";
         }
 

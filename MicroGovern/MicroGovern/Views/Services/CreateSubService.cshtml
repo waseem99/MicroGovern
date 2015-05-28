@@ -1,12 +1,12 @@
 ﻿@model MicroGovern.Models.Services_mng.Service
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Create";
 }
 
-<h2>Edit</h2>
+<h2>Create Sub Service</h2>
 
-@using (Html.BeginForm("Edit", "Services", new { parentServiceID = ViewBag.parentServiceID }))
+@using (Html.BeginForm("CreateSubService", "Services", new { parentServiceID = ViewBag.parentServiceID }))
 {
     @Html.AntiForgeryToken()
     
@@ -14,17 +14,15 @@
         <h4>Service</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.ID)
-
         @*<div class="form-group">
-            @Html.LabelFor(model => model.isleaf, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.isleaf)
-                    @Html.ValidationMessageFor(model => model.isleaf, "", new { @class = "text-danger" })
-                </div>
+        @Html.LabelFor(model => model.isleaf, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.isleaf)
+                @Html.ValidationMessageFor(model => model.isleaf, "", new { @class = "text-danger" })
             </div>
-        </div>*@
+        </div>
+    </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -60,19 +58,12 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @if (ViewBag.parentServiceID >= 0)
-    {
-        @Html.ActionLink("Back to List", "Details", new { id = ViewBag.parentServiceID })
-    }
-    else
-    {
-        @Html.ActionLink("Back to List", "Index")
-    }
+    @Html.ActionLink("Back to List", "details", new { parentServiceID=ViewBag.parentServiceID})
 </div>

@@ -1,4 +1,4 @@
-﻿@model MicroGovern.Models.Services_Management.Service
+﻿@model MicroGovern.Models.Services_mng.Service
 
 @{
     ViewBag.Title = "Details";
@@ -11,11 +11,35 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Title)
+            @Html.DisplayNameFor(model => model.isleaf)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Title)
+            @Html.DisplayFor(model => model.isleaf)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.icon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.icon)
         </dd>
 
         <dt>
@@ -26,17 +50,79 @@
             @Html.DisplayFor(model => model.DateAdded)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Details)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Details)
-        </dd>
-
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID, parentServiceID = Model.ID }) |
+    @if (ViewBag.parentServiceID >= 0)
+    {
+        @Html.ActionLink("Back to List", "Details", new { id = ViewBag.parentServiceID })
+    }
+    else
+    {
+        @Html.ActionLink("Back to List", "Index")
+    }
 </p>
+
+
+@if (!Model.isleaf)
+{
+
+ViewBag.secondTitle = "Sub Services";
+
+
+<h2>@ViewBag.secondTitle</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateSubService", new { parentServiceID = Model.ID })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.isleaf)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.icon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateAdded)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.subServices)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.isleaf)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.icon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateAdded)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID, parentServiceID = Model.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID, parentServiceID = Model.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID, parentServiceID = Model.ID })
+            </td>
+        </tr>
+    }
+    
+
+</table>
+    }
+

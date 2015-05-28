@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MicroGovern.Models.Profile;
+using Microsoft.AspNet.Identity;
 
 namespace MicroGovern.Controllers.Profile
 {
