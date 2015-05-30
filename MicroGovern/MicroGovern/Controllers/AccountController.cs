@@ -151,7 +151,8 @@ namespace MicroGovern.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser {
+                /*var user = new ApplicationUser {
+                    AccountStatus = "ACTIVE",
                     UserName = model.Email,
                     Email = model.Email ,
                     PhoneNumber = model.Phone,
@@ -164,10 +165,37 @@ namespace MicroGovern.Controllers
                     AccountType = model.AccountType,
                     RegisteredDate = DateTime.Now,
                     FullName = model.FullName
+                };*/
+                var user = new ApplicationUser
+                {
+                    AccountStatus = "ACTIVE",
+                    UserName = model.Email,
+                    Email = model.Email,
+                    PhoneNumber = model.Phone
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    var db = new ApplicationDbContext();
+                    var userDetails = new UserDetails
+                    {
+                        BirthDate = model.BirthDate,
+                        PrimaryRole = model.PrimaryRole,
+                        Country = model.Country,
+                        State = model.State,
+                        City = model.City,
+                        Address = model.Address,
+                        AccountType = model.AccountType,
+                        RegisteredDate = DateTime.Now,
+                        FullName = model.FullName,
+                        whoAmI = "",
+                        profilePicURL = "",
+                        ApplicationUserId = user.Id,
+                        stats = new UserStats()
+                };
+                    db.usersdb.Add(userDetails);
+                    db.SaveChanges();
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
