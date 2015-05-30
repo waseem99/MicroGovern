@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MicroGovern.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MicroGovern.Controllers
 {
@@ -151,21 +152,6 @@ namespace MicroGovern.Controllers
         {
             if (ModelState.IsValid)
             {
-                /*var user = new ApplicationUser {
-                    AccountStatus = "ACTIVE",
-                    UserName = model.Email,
-                    Email = model.Email ,
-                    PhoneNumber = model.Phone,
-                    BirthDate =model.BirthDate,
-                    PrimaryRole = model.PrimaryRole,
-                    Country = model.Country,
-                    State = model.State,
-                    City = model.City,
-                    Address = model.Address,
-                    AccountType = model.AccountType,
-                    RegisteredDate = DateTime.Now,
-                    FullName = model.FullName
-                };*/
                 var user = new ApplicationUser
                 {
                     AccountStatus = "ACTIVE",
@@ -176,6 +162,9 @@ namespace MicroGovern.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    //var userStore = new UserStore<ApplicationUser>(context);
+                    //var userManager = new UserManager<ApplicationUser>(userStore);
+                    UserManager.AddToRole(user.Id, "User");
                     var db = new ApplicationDbContext();
                     var userDetails = new UserDetails
                     {

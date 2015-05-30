@@ -1,5 +1,6 @@
 namespace MicroGovern.Migrations
 {
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -15,6 +16,8 @@ namespace MicroGovern.Migrations
 
         protected override void Seed(MicroGovern.Models.ApplicationDbContext context)
         {
+            //context.Roles.AddOrUpdate(r => r.Name, new IdentityRole() { Name = "Admin" });
+            //context.Roles.AddOrUpdate(r => r.Name, new IdentityRole() { Name = "User" });
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
