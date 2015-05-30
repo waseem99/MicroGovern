@@ -6,6 +6,7 @@ using System.Web;
 
 namespace MicroGovern.Models
 {
+    //88
     public class UserStats
     {
         [Key]
