@@ -1,5 +1,7 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Web;
 
@@ -23,5 +25,12 @@ namespace MicroGovern.Models
         public virtual ApplicationUser IUser { get; set; }
         public String ApplicationUserId { get; set; }
         public virtual UserStats stats { get; set; }
+
+        private ICollection<UserService> _myServices;
+        public virtual ICollection<UserService> myServices
+        {
+            get { return _myServices ?? (_myServices = new Collection<UserService>()); }
+            protected set { _myServices = value; }
+        }
     }
 }
