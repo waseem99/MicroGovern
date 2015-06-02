@@ -45,5 +45,31 @@ namespace MicroGovern.Controllers.Profile
             db.SaveChanges();*/
             return View(myDetails);
         }
+
+        public ActionResult myProfile_edit()
+        {
+            var userID = User.Identity.GetUserId();
+            UserDetails myDetails = db.usersdb.Single(x => x.ApplicationUserId == userID);
+            /*Service  dd  = db.Services.Find(1043);
+            myDetails.myServices.Add(new UserService() {
+                providedService = dd
+            });
+
+            dd = db.Services.Find(1045);
+            myDetails.myServices.Add(new UserService()
+            {
+                providedService = dd
+            });
+
+            dd = db.Services.Find(1046);
+            myDetails.myServices.Add(new UserService()
+            {
+                providedService = dd
+            });
+            
+            db.Entry(myDetails).State = EntityState.Modified;
+            db.SaveChanges();*/
+            return View(myDetails);
+        }
     }
 }

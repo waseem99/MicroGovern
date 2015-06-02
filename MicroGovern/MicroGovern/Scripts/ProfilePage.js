@@ -14,6 +14,7 @@
 
 
 
+
 function writeData() {
     var butt = document.getElementById('editDesc');
     butt.innerHTML="Save";
@@ -46,14 +47,19 @@ function writeData() {
 }
 
 function saveEdit() {
-    var area = document.getElementsByTagName('TEXTAREA')[0];
-    var y = document.createElement('P');
-    y.className = "whitetext";
-    document.getElementById('editDesc').innerHTML = "Edit";
-    var z = area.parentNode;
-    y.innerHTML = area.value;
-    z.insertBefore(y, area);
-    z.removeChild(area);
-    //z.removeChild(document.getElementsByID('editDesc')[0]);
-    editing = false;
+    window.location.reload();
+
+    //var area = document.getElementsByTagName('TEXTAREA')[0];
+    //var y = document.createElement('P');
+    //y.className = "whitetext";
+    //y.id = "profileDesc";
+    //document.getElementById('editDesc').innerHTML = "Edit";
+    //var name = document.getElementById('FullName');
+    //var z = area.parentNode;
+    //y.innerHTML = area.value;
+    //z.insertBefore(y, area);
+    
+    //z.removeChild(area);
+    ////z.removeChild(document.getElementsByID('editDesc')[0]);
+    //editing = false;
 }
