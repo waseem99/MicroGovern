@@ -35,5 +35,7 @@ namespace MicroGovern.Models
         public System.Data.Entity.DbSet<UserDetails> usersdb { get; set; }
         //public System.Data.Entity.DbSet<UserStats> usersStatsdb { get; set; }
         public System.Data.Entity.DbSet<MicroGovern.Models.Services_mng.Service> Services { get; set; }
+
+        public System.Data.Entity.DbSet<MicroGovern.Models.Request_mng.Request> Requests { get; set; }
     }
 }

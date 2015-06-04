@@ -6,18 +6,19 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using MicroGovern.Models.Services_Management;
+using MicroGovern.Models;
+using MicroGovern.Models.Request_mng;
 
 namespace MicroGovern.Controllers.Services_Management.Request_mng
 {
     public class RequestsController : Controller
     {
-        private RequestDBContext db = new RequestDBContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Requests
         public ActionResult Index()
         {
-            return View(db.requests.ToList());
+            return View(db.Requests.ToList());
         }
 
         // GET: Requests/Details/5
@@ -27,12 +28,12 @@ namespace MicroGovern.Controllers.Services_Management.Request_mng
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Request request = db.requests.Find(id);
-            if (request == null)
+            Request aRequest = db.Requests.Find(id);
+            if (aRequest == null)
             {
                 return HttpNotFound();
             }
-            return View(request);
+            return View(aRequest);
         }
 
         // GET: Requests/Create
@@ -46,16 +47,16 @@ namespace MicroGovern.Controllers.Services_Management.Request_mng
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Title,RequestIniated,Details,MinRate,MaxRate,WorkDueDate,WorkableTimeRange,PicURL,BidsVisibility")] Request request)
+        public ActionResult Create([Bind(Include = "ID,Title,RequestIniated,Details,MinRate,MaxRate,WorkDueDate,WorkableTimeRange,PicURL,BidsVisibility")] Request aRequest)
         {
             if (ModelState.IsValid)
             {
-                db.requests.Add(request);
+                db.Requests.Add(aRequest);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(request);
+            return View(aRequest);
         }
 
         // GET: Requests/Edit/5
@@ -65,12 +66,12 @@ namespace MicroGovern.Controllers.Services_Management.Request_mng
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Request request = db.requests.Find(id);
-            if (request == null)
+            Request aRequest = db.Requests.Find(id);
+            if (aRequest == null)
             {
                 return HttpNotFound();
             }
-            return View(request);
+            return View(aRequest);
         }
 
         // POST: Requests/Edit/5
@@ -78,15 +79,15 @@ namespace MicroGovern.Controllers.Services_Management.Request_mng
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Title,RequestIniated,Details,MinRate,MaxRate,WorkDueDate,WorkableTimeRange,PicURL,BidsVisibility")] Request request)
+        public ActionResult Edit([Bind(Include = "ID,Title,RequestIniated,Details,MinRate,MaxRate,WorkDueDate,WorkableTimeRange,PicURL,BidsVisibility")] Request aRequest)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(request).State = EntityState.Modified;
+                db.Entry(aRequest).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(request);
+            return View(aRequest);
         }
 
         // GET: Requests/Delete/5
@@ -96,12 +97,12 @@ namespace MicroGovern.Controllers.Services_Management.Request_mng
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Request request = db.requests.Find(id);
-            if (request == null)
+            Request aRequest = db.Requests.Find(id);
+            if (aRequest == null)
             {
                 return HttpNotFound();
             }
-            return View(request);
+            return View(aRequest);
         }
 
         // POST: Requests/Delete/5
@@ -109,8 +110,8 @@ namespace MicroGovern.Controllers.Services_Management.Request_mng
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Request request = db.requests.Find(id);
-            db.requests.Remove(request);
+            Request aRequest = db.Requests.Find(id);
+            db.Requests.Remove(aRequest);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
