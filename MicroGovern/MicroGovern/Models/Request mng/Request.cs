@@ -10,7 +10,7 @@ using MicroGovern.Models.Request_mng;
 
 namespace MicroGovern.Models.Request_mng
 {
-    public abstract class ARequest
+    public abstract class Request
     {
 
 
@@ -52,7 +52,7 @@ namespace MicroGovern.Models.Request_mng
         public Boolean BidsVisibility { get; set; }
 
 
-        public ARequest()
+        public Request()
         {
             this.RequestIniated = DateTime.Now;
             this.WorkDueDate = DateTime.Now;
@@ -71,6 +71,6 @@ namespace MicroGovern.Models.Request_mng
     //Database Model
     public class RequestDBContext : DbContext
     {
-        public DbSet<ARequest> requests { get; set; }
+        public DbSet<Request> requests { get; set; }
     }
 }

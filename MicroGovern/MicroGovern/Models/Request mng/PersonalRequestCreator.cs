@@ -7,7 +7,7 @@ namespace MicroGovern.Models.Request_mng
 {
     public class PersonalRequestCreator: RequestCreator
     {
-        public override ARequest CreateRequest()
+        public override Request CreateRequest()
         {
             return new PersonalRequest();
         }

@@ -7,7 +7,7 @@ namespace MicroGovern.Models.Request_mng
 {
     public class CommunityRequestCreator: RequestCreator
     {
-        public  override ARequest CreateRequest()
+        public  override Request CreateRequest()
         {
             return new CommunityRequest();
         }

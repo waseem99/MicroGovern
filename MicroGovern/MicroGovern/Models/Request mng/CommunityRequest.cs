@@ -6,7 +6,7 @@ using System.Web;
 
 namespace MicroGovern.Models.Request_mng
 {
-    public class CommunityRequest: ARequest
+    public class CommunityRequest: Request
     {
         [Required]
         [MinLength(10)]

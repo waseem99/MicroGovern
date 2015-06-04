@@ -216,6 +216,12 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Profile\ProfileViewModel.cs" />
     <Compile Include="Models\Request mng\Request.cs" />
+    <Compile Include="Models\Request mng\CommunityRequest.cs" />
+    <Compile Include="Models\Request mng\CommunityRequestCreator.cs" />
+    <Compile Include="Models\Request mng\PersonalRequest.cs" />
+    <Compile Include="Models\Request mng\PersonalRequestCreator.cs" />
+    <Compile Include="Models\Request mng\RequestCreator.cs" />
+    <Compile Include="Models\Request mng\RequestService.cs" />
     <Compile Include="Models\Services mng\Service.cs" />
     <Compile Include="Models\Services mng\Service_load.cs" />
     <Compile Include="Models\UserDetails.cs" />

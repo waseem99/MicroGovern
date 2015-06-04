@@ -28,7 +28,7 @@ namespace MicroGovern.Controllers.Services_Management.Request_mng
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ARequest aRequest = db.Requests.Find(id);
+            Request aRequest = db.Requests.Find(id);
             if (aRequest == null)
             {
                 return HttpNotFound();
@@ -47,7 +47,7 @@ namespace MicroGovern.Controllers.Services_Management.Request_mng
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Title,RequestIniated,Details,MinRate,MaxRate,WorkDueDate,WorkableTimeRange,PicURL,BidsVisibility")] ARequest aRequest)
+        public ActionResult Create([Bind(Include = "ID,Title,RequestIniated,Details,MinRate,MaxRate,WorkDueDate,WorkableTimeRange,PicURL,BidsVisibility")] Request aRequest)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +66,7 @@ namespace MicroGovern.Controllers.Services_Management.Request_mng
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ARequest aRequest = db.Requests.Find(id);
+            Request aRequest = db.Requests.Find(id);
             if (aRequest == null)
             {
                 return HttpNotFound();
@@ -79,7 +79,7 @@ namespace MicroGovern.Controllers.Services_Management.Request_mng
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Title,RequestIniated,Details,MinRate,MaxRate,WorkDueDate,WorkableTimeRange,PicURL,BidsVisibility")] ARequest aRequest)
+        public ActionResult Edit([Bind(Include = "ID,Title,RequestIniated,Details,MinRate,MaxRate,WorkDueDate,WorkableTimeRange,PicURL,BidsVisibility")] Request aRequest)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +97,7 @@ namespace MicroGovern.Controllers.Services_Management.Request_mng
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ARequest aRequest = db.Requests.Find(id);
+            Request aRequest = db.Requests.Find(id);
             if (aRequest == null)
             {
                 return HttpNotFound();
@@ -110,7 +110,7 @@ namespace MicroGovern.Controllers.Services_Management.Request_mng
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ARequest aRequest = db.Requests.Find(id);
+            Request aRequest = db.Requests.Find(id);
             db.Requests.Remove(aRequest);
             db.SaveChanges();
             return RedirectToAction("Index");

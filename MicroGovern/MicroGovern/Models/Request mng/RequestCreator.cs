@@ -7,6 +7,6 @@ namespace MicroGovern.Models.Request_mng
 {
     public abstract class RequestCreator
     {
-        public abstract ARequest CreateRequest();
+        public abstract Request CreateRequest();
     }
 }
