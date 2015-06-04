@@ -50,26 +50,43 @@ namespace MicroGovern.Controllers.Profile
         {
             var userID = User.Identity.GetUserId();
             UserDetails myDetails = db.usersdb.Single(x => x.ApplicationUserId == userID);
-            /*Service  dd  = db.Services.Find(1043);
-            myDetails.myServices.Add(new UserService() {
-                providedService = dd
-            });
 
-            dd = db.Services.Find(1045);
-            myDetails.myServices.Add(new UserService()
-            {
-                providedService = dd
-            });
+            ViewBag.servicesList = db.Services.ToList().Where(x => x.isleaf == false);
 
-            dd = db.Services.Find(1046);
-            myDetails.myServices.Add(new UserService()
-            {
-                providedService = dd
-            });
-            
-            db.Entry(myDetails).State = EntityState.Modified;
-            db.SaveChanges();*/
             return View(myDetails);
         }
+
+        [System.Web.Mvc.HttpGet]
+        public JsonResult myProfile_addService(int serviceId)
+        {
+            Service newService = db.Services.Find(serviceId);
+            var userID = User.Identity.GetUserId();
+            UserDetails myDetails = db.usersdb.Single(x => x.ApplicationUserId == userID);
+            UserService newUserService = new UserService(){ providedService = newService };
+            myDetails.myServices.Add(newUserService);
+            db.Entry(myDetails).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return Json(newUserService, JsonRequestBehavior.AllowGet);
+        }
+
+        [System.Web.Mvc.HttpGet]
+        public JsonResult myProfile_deleteService(int serviceId)
+        {
+            Service newService = db.Services.Find(serviceId);
+            var userID = User.Identity.GetUserId();
+            UserDetails myDetails = db.usersdb.Single(x => x.ApplicationUserId == userID);
+
+            List<UserService> myServices = myDetails.myServices.ToList<UserService>();
+            UserService temp = myServices.Find(item => item.ID == serviceId);
+
+            myDetails.myServices.Remove(temp);
+
+            db.Entry(myDetails).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return Json("", JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

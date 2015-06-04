@@ -116,7 +116,7 @@
 
     @*<section>*@
         <div class="container">
-            <div class="row text-center">
+            <div id="myservicesdiv" class="row text-center">
                 <h2 style="margin-bottom:2%">Services I can offer
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal" data-placement="top" title="Edit Services">
@@ -139,137 +139,29 @@
                             </div>
                             <div class="modal-body">
                                 <div class="container-fluid">
-                                    <div class="col-md-12">
+                                    <div id="serviceEditStart" class="col-md-12">
                                         <p class="italic small">Click on any service to delete it or click on Add more button</p>
                                     </div>
-                                    <div id="service1" class="col-md-3">
-                                        <a href="#" class="portfolio-box" data-toggle="tooltip" data-placement="top" title="Remove Service">
-                                            <i class="fa fa-4x fa-bug bounceIn text-primary"></i>
-                                            <div class="portfolio-box-caption">
-                                                <div class="portfolio-box-caption-content">
-                                                    <div class="project-category text-faded">
+                                    @foreach (var item in Model.myServices)
+                                    {
+                                        <div id="service1edit" class="col-md-3">
+                                            <button value="@Html.DisplayFor(modelItem => item.ID)" class="btn portfolio-box deleteServiceBtn" data-toggle="tooltip" data-placement="top" title="Remove Service">
+                                                <i class="fa fa-4x @Html.DisplayFor(modelItem => item.providedService.icon) bounceIn text-primary"></i>
+                                                <div class="portfolio-box-caption">
+                                                    <div class="portfolio-box-caption-content">
+                                                        <div class="project-category text-faded">
                                                         
-                                                    </div>
-                                                    <div class="project-name">
-                                                        <span class="fa fa-trash-o fa-1x"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <h5>Service Name</h5>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#" class="portfolio-box" data-toggle="tooltip" data-placement="top" title="Remove Service">
-                                            <i class="fa fa-4x fa-bug bounceIn text-primary"></i>
-                                            <div class="portfolio-box-caption">
-                                                <div class="portfolio-box-caption-content">
-                                                    <div class="project-category text-faded">
-
-                                                    </div>
-                                                    <div class="project-name">
-                                                        <span class="fa fa-trash-o fa-1x"></span>
+                                                        </div>
+                                                        <div class="project-name">
+                                                            <span class="fa fa-trash-o fa-1x"></span>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </a>
-                                        <h5>Service Name</h5>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#" class="portfolio-box" data-toggle="tooltip" data-placement="top" title="Remove Service">
-                                            <i class="fa fa-4x fa-bug bounceIn text-primary"></i>
-                                            <div class="portfolio-box-caption">
-                                                <div class="portfolio-box-caption-content">
-                                                    <div class="project-category text-faded">
-
-                                                    </div>
-                                                    <div class="project-name">
-                                                        <span class="fa fa-trash-o fa-1x"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <h5>Service Name</h5>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#" class="portfolio-box" data-toggle="tooltip" data-placement="top" title="Remove Service">
-                                            <i class="fa fa-4x fa-bug bounceIn text-primary"></i>
-                                            <div class="portfolio-box-caption">
-                                                <div class="portfolio-box-caption-content">
-                                                    <div class="project-category text-faded">
-
-                                                    </div>
-                                                    <div class="project-name">
-                                                        <span class="fa fa-trash-o fa-1x"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <h5>Service Name</h5>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#" class="portfolio-box" data-toggle="tooltip" data-placement="top" title="Remove Service">
-                                            <i class="fa fa-4x fa-bug bounceIn text-primary"></i>
-                                            <div class="portfolio-box-caption">
-                                                <div class="portfolio-box-caption-content">
-                                                    <div class="project-category text-faded">
-
-                                                    </div>
-                                                    <div class="project-name">
-                                                        <span class="fa fa-trash-o fa-1x"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <h5>Service Name</h5>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#" class="portfolio-box" data-toggle="tooltip" data-placement="top" title="Remove Service">
-                                            <i class="fa fa-4x fa-bug bounceIn text-primary"></i>
-                                            <div class="portfolio-box-caption">
-                                                <div class="portfolio-box-caption-content">
-                                                    <div class="project-category text-faded">
-
-                                                    </div>
-                                                    <div class="project-name">
-                                                        <span class="fa fa-trash-o fa-1x"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <h5>Service Name</h5>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#" class="portfolio-box" data-toggle="tooltip" data-placement="top" title="Remove Service">
-                                            <i class="fa fa-4x fa-bug bounceIn text-primary"></i>
-                                            <div class="portfolio-box-caption">
-                                                <div class="portfolio-box-caption-content">
-                                                    <div class="project-category text-faded">
-
-                                                    </div>
-                                                    <div class="project-name">
-                                                        <span class="fa fa-trash-o fa-1x"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <h5>Service Name</h5>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#" class="portfolio-box" data-toggle="tooltip" data-placement="top" title="Remove Service">
-                                            <i class="fa fa-4x fa-bug bounceIn text-primary"></i>
-                                            <div class="portfolio-box-caption">
-                                                <div class="portfolio-box-caption-content">
-                                                    <div class="project-category text-faded">
-
-                                                    </div>
-                                                    <div class="project-name">
-                                                        <span class="fa fa-trash-o fa-1x"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <h5>Service Name</h5>
-                                    </div>
+                                            </button>
+                                            <h5>@Html.DisplayFor(modelItem => item.providedService.Name)</h5>
+                                        </div>
+                                    }
+                                    
                                     <div class="col-md-12">
                                         <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                                             <span class="fa fa-plus-circle fa-1x"></span> Add more
@@ -280,21 +172,19 @@
                                                     <div class="form-group">
                                                         <label for="majorcategory">Select category (select one):</label>
                                                         <select class="form-control" id="majorcategory">
-                                                            <option>Electrician</option>
-                                                            <option>Plumber</option>
-                                                            <option>Carpenter</option>
-                                                            <option>Bug Exterminator</option>
-                                                        </select>
-                                                        <br />
-                                                        <label for="subcategory">Select sub-category (select one):</label>
-                                                        <select class="form-control" id="subcategory">
-                                                            <option>Electrician</option>
-                                                            <option>Plumber</option>
-                                                            <option>Carpenter</option>
-                                                            <option>Bug Exterminator</option>
+                                                            @foreach (var item in ViewBag.servicesList)
+                                                            {
+                                                                <option value="@item.ID">
+                                                                    @item.Name
+                                                                </option>
+                                                            }
+                                                           </select>
+                                                           <br/>
+                                                           <label for= "subcategory" > Select sub - category(select one):</label>
+                                                            <select class="form-control" id="subcategory">
                                                         </select>
                                                     </div>
-                                                    <a href="#" id="AddNewServiceBtn" class="btn btn-primary">Add</a>
+                                                    <a id= "AddNewServiceBtn" class="btn btn-primary">Add</a>
                                                 </form>
                                             </div>
                                         </div>
@@ -303,17 +193,16 @@
 
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
+                                <button type = "button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type = "button" class="btn btn-primary">Save changes</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                
 
-                @foreach (var item in Model.myServices)
-                {
-                    <div class="col-md-3">
+
+                  @foreach (var item in Model.myServices){
+                    <div id="@Html.DisplayFor(modelItem => item.ID)" class="col-md-3">
                         <i class="fa fa-4x @Html.DisplayFor(modelItem => item.providedService.icon) bounceIn text-primary"></i>
                         <h3>@Html.DisplayFor(modelItem => item.providedService.Name)</h3>
                         <p class="text-grey">@Html.DisplayFor(modelItem => item.providedService.Description)</p>

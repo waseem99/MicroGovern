@@ -304,6 +304,7 @@
     <Content Include="Scripts\js\jquery.js" />
     <Content Include="Scripts\js\wow.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\ProfilePage.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
@@ -356,6 +357,7 @@
     <Content Include="Views\Services\Edit.cshtml" />
     <Content Include="Views\Services\Index.cshtml" />
     <Content Include="Views\Services\CreateSubService.cshtml" />
+    <Content Include="Views\Profile\myProfile_edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
