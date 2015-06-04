@@ -5,9 +5,9 @@ using System.Web;
 using System.Data.Entity;
 using System.ComponentModel.DataAnnotations;
 
-namespace MicroGovern.Models.Services_Management
+namespace MicroGovern.Models.Services_mng
 {
-    public class Service
+    public class ServiceLoad
     {
         [Key]
         public int ID { get; set; }
@@ -28,13 +28,13 @@ namespace MicroGovern.Models.Services_Management
         [MinLength(100)]
         public string Details { get; set; }
 
-        public Service()
+        public ServiceLoad()
         {
 
         }
     }
     public class ServiceDBContext : DbContext
     {
-        public DbSet<Service> Services { get; set; }
+        public DbSet<ServiceLoad> ServicesLoad { get; set; }
     }
 }
