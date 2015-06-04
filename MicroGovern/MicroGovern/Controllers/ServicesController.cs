@@ -23,6 +23,14 @@ namespace MicroGovern.Controllers
             return View(db.Services.ToList().Where(x => x.isleaf == false));
         }
 
+        [System.Web.Mvc.HttpGet]
+        public JsonResult getSubServices(int serviceId)
+        {
+             IEnumerable<Service> subServiceslist = db.Services.ToList().Where(x => x.ID == serviceId);
+
+            return Json(subServiceslist, JsonRequestBehavior.AllowGet);
+        }
+
         // GET: Services/Details/5
         public ActionResult Details(int? id, int? parentServiceID)
         {
