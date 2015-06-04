@@ -26,8 +26,14 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 text-center">
-                <a href="#" class="portfolio-box">
-                    <img id="profileimg" src="~/Content/img/AARprofilepic.JPG" class="img-rounded img-responsive profilepic" align="middle">
+                @using (Html.BeginForm("ProfilePicUpload", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <input id="newIMGinput" name="photo" type="file" style="visibility:hidden"/>
+                    <input id="newIMGsubmit" type="submit" value="Change" style="visibility:hidden"/>
+                }
+                @*~/Content/img/AARprofilepic.JPG*@
+                <a href="#changeDP" id="changeDP" class="portfolio-box">
+                    <img id="profileimg" src="@Html.DisplayFor(model => model.profilePicURL)" class="img-rounded img-responsive profilepic" align="middle">
                     <div class="portfolio-box-caption">
                         <div class="portfolio-box-caption-content">
                             <div class="project-category text-faded">
@@ -79,16 +85,15 @@
                 <div class="row vertical-align">
                     <br />
                     <div class=" col-md-9">
-                        
-                        <h2 class="whitetext"> @Html.DisplayFor(model => model.FullName)
-                            <button id="editDesc" class="btn btn-default btn-md" visibility="true">Edit</button>
+                        <h2 id="userNamediv" class="whitetext"> <span id="userNameOld">@Html.DisplayFor(model => model.FullName)</span>
+                        <button id="editDesc" class="btn btn-default btn-md" visibility="true">Edit</button></h2>
+                        <h2 id="userNameEditdiv" class="whitetext" visibility="false">
+                            <input type="text" id="userNewName" />
                         </h2>
                         
-                        <p id="profileDesc" class="whitetext">
-                            Ahmad Abdul Rauf gives you a powerful, patterns-based way to build dynamic websites that
-                            enables a clean separation of concerns and gives you full control over markup
-                            for enjoyable, agile development.
-                        </p>
+                        <p id="profileDesc" class="whitetext">@Html.DisplayFor(model => model.whoAmI)</p>
+                        <textarea id="profileDescEdit" style="width:100%; " visibility="false"></textarea> <br>
+                        <button id="saveDesc" style="float:right" class="btn btn-default btn-md" visibility="false">Save</button>
                     </div>
                     <div class=" col-md-3 text-center">
                         <h5 class="whitetext">Rating</h5>
@@ -163,10 +168,10 @@
                                     }
                                     
                                     <div class="col-md-12">
-                                        <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                        <a class="btn btn-primary" id="addmorebtn" aria-expanded="false" aria-controls="collapseExample">
                                             <span class="fa fa-plus-circle fa-1x"></span> Add more
                                         </a>
-                                        <div class="collapse" id="collapseExample">
+                                        <div id="collapseExample">
                                             <div class="well">
                                                 <form role="form">
                                                     <div class="form-group">
@@ -194,7 +199,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type = "button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type = "button" class="btn btn-primary">Save changes</button>
+                                @*<button type = "button" class="btn btn-primary">Save changes</button>*@
                             </div>
                         </div>
                     </div>
