@@ -32,6 +32,43 @@
     z-index: 3;
 }*/
 
-.first-row {
+/*.first-row {
     margin-top: 50pt;
+}*/
+
+.whitetext {
+    color: #eee;
+}
+
+.white-background {
+    background-color: white;
+    
+}
+
+.vertical-divider {
+  text-align: center;
+  /*padding-bottom: 100px;*/
+  /*margin-bottom: -100px;*/
+  border-left: 1px solid #F2F7F9;
+  border-right: 1px solid #F2F7F9;
+}
+
+.dropdown-menu {
+    width: 100%;
+}
+
+.scrollable-menu {
+    height: auto;
+    max-height: 250px;
+    overflow-x: hidden;
+}
+
+.table-hover>tbody>tr:hover>td, .table-hover>tbody>tr:hover>th {
+  background-color: #e6e6e6;
+  color:#484848;
+}
+
+.SelectedRow {
+    background-color: #e6e6e6;
+    color:#484848;
 }
