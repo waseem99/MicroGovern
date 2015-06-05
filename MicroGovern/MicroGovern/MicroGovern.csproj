@@ -216,6 +216,12 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Profile\ProfileViewModel.cs" />
     <Compile Include="Models\Request mng\Request.cs" />
+    <Compile Include="Models\Request mng\CommunityRequest.cs" />
+    <Compile Include="Models\Request mng\CommunityRequestCreator.cs" />
+    <Compile Include="Models\Request mng\PersonalRequest.cs" />
+    <Compile Include="Models\Request mng\PersonalRequestCreator.cs" />
+    <Compile Include="Models\Request mng\RequestCreator.cs" />
+    <Compile Include="Models\Request mng\RequestService.cs" />
     <Compile Include="Models\Services mng\Service.cs" />
     <Compile Include="Models\Services mng\Service_load.cs" />
     <Compile Include="Models\UserDetails.cs" />
@@ -304,6 +310,7 @@
     <Content Include="Scripts\js\jquery.js" />
     <Content Include="Scripts\js\wow.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\ProfilePage.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
@@ -356,6 +363,7 @@
     <Content Include="Views\Services\Edit.cshtml" />
     <Content Include="Views\Services\Index.cshtml" />
     <Content Include="Views\Services\CreateSubService.cshtml" />
+    <Content Include="Views\Profile\myProfile_edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
