@@ -4,6 +4,7 @@
     $("#saveDesc").hide();
     $("#profileDescEdit").hide();
     $("#userNameEditdiv").hide();
+    $("#avgRateperhEditr").hide();
 
     //When main category dropdown changes in add new service
     $("#majorcategory").change(function () {
@@ -95,6 +96,52 @@
     $("#addmorebtn").click(function () {
         $("#collapseExample").toggle();
     });
+
+    $("#avgRateperhr").click(function () {
+        $("#avgRateperhr").hide();
+        var vals = parseInt($("#avgRateperhr").text());
+        console.log(vals);
+        $("#avgRateperhEditr").val(vals);
+        $("#avgRateperhEditr").show();
+    });
+
+    $("#avgRateperhEditr").keypress(function (e) {
+        if (e.which == 13) {
+            updateRateperHr();
+        }
+    });
+
+    $("#avgRateperhEditr").blur(function () {
+        updateRateperHr();
+    });
+
+    function updateRateperHr() {
+        var value = $("#avgRateperhEditr").val();
+        console.log(value);
+        if (value > 0){
+            $.ajax({
+                type: "GET",
+                url: "/profile/myProfile_updateRate",
+                data: { newRate: value },
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    debugger;
+                    $("#avgRateperhEditr").hide();
+
+                    $("#avgRateperhr").text(value);
+                    $("#avgRateperhr").show();
+
+                },
+                error: function (response) {
+                    debugger;
+                    console.log('eror' + response);
+                }
+            });
+            
+            
+        }
+    }
 
     function populateSubServicesDropdown() {
         var id = $("#majorcategory").val();

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
-using MicroGovern.Models.Profile;
 using MicroGovern.Models;
 using System.Data.Entity;
 using MicroGovern.Models.Services_mng;
@@ -16,54 +15,36 @@ namespace MicroGovern.Controllers.Profile
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Profile
+        [Authorize]
         public ActionResult Index()
         {
-            return RedirectToAction("myProfile"); 
+            return RedirectToAction("myProfile_edit");
         }
 
-        public ActionResult myProfile()
+        public ActionResult myProfile(String userID)
         {
-            var userID = User.Identity.GetUserId();
             UserDetails myDetails = db.usersdb.Single(x => x.ApplicationUserId == userID);
-            /*Service  dd  = db.Services.Find(1043);
-            myDetails.myServices.Add(new UserService() {
-                providedService = dd
-            });
-
-            dd = db.Services.Find(1045);
-            myDetails.myServices.Add(new UserService()
-            {
-                providedService = dd
-            });
-
-            dd = db.Services.Find(1046);
-            myDetails.myServices.Add(new UserService()
-            {
-                providedService = dd
-            });
-            
-            db.Entry(myDetails).State = EntityState.Modified;
-            db.SaveChanges();*/
             return View(myDetails);
         }
 
+        [Authorize]
         public ActionResult myProfile_edit()
         {
             var userID = User.Identity.GetUserId();
             UserDetails myDetails = db.usersdb.Single(x => x.ApplicationUserId == userID);
-
             ViewBag.servicesList = db.Services.ToList().Where(x => x.isleaf == false);
 
             return View(myDetails);
         }
 
+        [Authorize]
         [System.Web.Mvc.HttpGet]
         public JsonResult myProfile_addService(int serviceId)
         {
             Service newService = db.Services.Find(serviceId);
             var userID = User.Identity.GetUserId();
             UserDetails myDetails = db.usersdb.Single(x => x.ApplicationUserId == userID);
-            UserService newUserService = new UserService(){ providedService = newService };
+            UserService newUserService = new UserService() { providedService = newService };
             myDetails.myServices.Add(newUserService);
             db.Entry(myDetails).State = EntityState.Modified;
             db.SaveChanges();
@@ -71,6 +52,7 @@ namespace MicroGovern.Controllers.Profile
             return Json(newUserService, JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize]
         [System.Web.Mvc.HttpGet]
         public JsonResult myProfile_updateNameAndDesc(String newName, String newDesc)
         {
@@ -86,6 +68,22 @@ namespace MicroGovern.Controllers.Profile
             return Json("", JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize]
+        [System.Web.Mvc.HttpGet]
+        public JsonResult myProfile_updateRate(float newRate)
+        {
+            var userID = User.Identity.GetUserId();
+            UserDetails myDetails = db.usersdb.Single(x => x.ApplicationUserId == userID);
+
+            myDetails.stats.avgRatePerHr = newRate;
+
+            db.Entry(myDetails).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return Json("", JsonRequestBehavior.AllowGet);
+        }
+
+        [Authorize]
         [System.Web.Mvc.HttpGet]
         public JsonResult myProfile_deleteService(int serviceId)
         {
@@ -104,22 +102,20 @@ namespace MicroGovern.Controllers.Profile
             return Json("", JsonRequestBehavior.AllowGet);
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult ProfilePicUpload(HttpPostedFileBase photo)
         {
-            //string directory = @"~/Content/img/";
-
             if (photo != null && photo.ContentLength > 0)
             {
                 var userID = User.Identity.GetUserId();
                 UserDetails myDetails = db.usersdb.Single(x => x.ApplicationUserId == userID);
-                //var fileName = Path.GetFileName(photo.FileName);
                 var fileName = myDetails.ID + "_profile_" + Path.GetFileName(photo.FileName);
                 var previousDP = myDetails.profilePicURL;
                 string path = System.IO.Path.Combine(Server.MapPath("~/Content/img/profile"), fileName);
                 photo.SaveAs(path);
 
-                
+
                 myDetails.profilePicURL = "/Content/img/profile/" + fileName;
 
                 db.Entry(myDetails).State = EntityState.Modified;
@@ -131,42 +127,9 @@ namespace MicroGovern.Controllers.Profile
                     System.IO.File.Delete(fullPath);
                     //Session["DeleteSuccess"] = "Yes";
                 }
-                
-            }
 
+            }
             return RedirectToAction("myProfile_edit");
         }
-        /*
-        [HttpPost]
-        public ActionResult ProfilePicUpload(HttpPostedFileBase file)
-        {
-            if (file != null)
-            {
-                string pic = System.IO.Path.GetFileName(file.FileName);
-                string path = System.IO.Path.Combine(Server.MapPath("~/Content/img/profile"), pic);
-                // file is uploaded
-                file.SaveAs(path);
-
-                var userID = User.Identity.GetUserId();
-                UserDetails myDetails = db.usersdb.Single(x => x.ApplicationUserId == userID);
-                myDetails.profilePicURL = path;
-
-                db.Entry(myDetails).State = EntityState.Modified;
-                db.SaveChanges();
-
-                // save the image path path to the database or you can send image
-                // directly to database
-                // in-case if you want to store byte[] ie. for DB
-                /*using (MemoryStream ms = new MemoryStream())
-                {
-                    file.InputStream.CopyTo(ms);
-                    byte[] array = ms.GetBuffer();
-                }*/
-
-            }
-            // after successfully uploading redirect the user
-           /* return RedirectToAction("myProfile_edit");
-            //return RedirectToAction("actionname", "controller name");
-        }*/
-
     }
+}

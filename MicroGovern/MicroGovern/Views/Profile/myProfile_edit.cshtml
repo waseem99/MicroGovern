@@ -281,8 +281,11 @@
                                     <i class="fa fa-4x fa-money bounceIn text-default"></i>
                                     @*<img src="http://placehold.it/60X60" alt="Alternate Text" />*@
                                 </div>
+                                
                                 <div class="col-xs-9 text-right">
-                                    <div> Rs. <span class="huge"> @Html.DisplayFor(model => model.stats.avgRatePerHr)</span></div>
+                                    <div> Rs. <span class="huge"  id="avgRateperhr"> @Html.DisplayFor(model => model.stats.avgRatePerHr)</span>
+                                        <input id="avgRateperhEditr" style="width:50%; color:black" type="number" /> 
+                                    </div>
                                     <div>Price/hour</div>
                                 </div>
                             </div>
