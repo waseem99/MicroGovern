@@ -1,6 +1,12 @@
 ﻿$(document).ready(function () {
     $("#SearchFilterCollapse").slideUp();
 
+    //Enable all popovers on page
+    $('[data-toggle="popover"]').popover();
+
+    //Enable all tooltips on page
+    $('[data-toggle="tooltip"]').tooltip();
+
     $("#SearchFilterBtn").click(function () {
         $("#SearchFilterCollapse").toggle();
     });

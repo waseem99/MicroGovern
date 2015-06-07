@@ -34,5 +34,9 @@ namespace MicroGovern.Controllers
         {
             return View();
         }
+        public ActionResult SearchResult_ServiceProviders()
+        {
+            return View();
+        }
     }
 }

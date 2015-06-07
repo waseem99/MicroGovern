@@ -70,5 +70,27 @@
 
 .SelectedRow {
     background-color: #e6e6e6;
-    color:#484848;
+    color: #484848;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.name-bold {
+    font-weight:600;
+}
+
+.vertical-padding {
+    padding-top:1%;
+}
+
+.location-small-font {
+    font-size:11px;
+}
+
+.project-name:hover {
+    color: #e4e4e4;
 }
