@@ -21,10 +21,17 @@ namespace MicroGovern.Controllers.Profile
             return RedirectToAction("myProfile_edit");
         }
 
-        public ActionResult myProfile(String userID)
+        [HttpGet]
+        public ActionResult myProfile(int userID)
         {
-            UserDetails myDetails = db.usersdb.Single(x => x.ApplicationUserId == userID);
-            return View(myDetails);
+            //userID = 6;
+            if (userID > 0)
+            {
+                //UserDetails myDetails = db.usersdb.Single(x => x.ApplicationUserId == userID);
+                UserDetails myDetails = db.usersdb.Single(x => x.ID == userID);
+                return View(myDetails);
+            }
+            return View();
         }
 
         [Authorize]

@@ -1,0 +1,259 @@
+﻿@model List <MicroGovern.Models.UserDetails>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link href="@Url.Content("~/Content/SearchResult.css")" rel="stylesheet" type="text/css" />
+</head>
+<script src="~/Scripts/js/jquery.js"></script>
+@*<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>*@
+@*<script src="~/Scripts/jquery-ui-1.11.4.js"></script>*@
+@*<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>*@
+<script src="~/Scripts/js/bootstrap.min.js"></script>
+<script src="~/Scripts/ProvidersListResult.js"></script>
+@*<script src="~/Scripts/jquery-ui/external/jquery/jquery.js"></script>*@
+
+@*<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">*@
+@*<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">*@
+@*<link href="@Url.Content("~/Content/jquery-ui/jquery-ui.css")" rel="stylesheet" type="text/css" />*@
+
+
+<section style="background-image:url('/Content/img/header.jpg')">
+    <div class="container">
+        <form id="SearchForm">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="input-group">
+                        <input id="mainSearchInput" type="text" name="mainSearch" class="search-query form-control" aria-label="..." placeholder="Search">
+                        <div class="input-group-btn">
+                            <button id="SearchFilterBtn" type="button" class="btn btn-default" aria-expanded="true"><span class="caret"></span></button>
+                            <button id="searchNowrbtn" class="btn btn-default" type="button">
+                                <span class="fa fa-search fa-1x"></span>
+                            </button>
+                        </div><!-- /btn-group -->
+                    </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+            </div>
+
+
+            <div id="SearchFilterCollapse" class="well">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="modal-header">
+                            @*<button class="btn btn-default">Clear</button>*@
+                            @*<button type="button" class="close" aria-label="Close">Clear</button>*@
+                            <h4 class="modal-title text-center">Search Options</h4>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    @*<form role="form">*@
+                                    <div class="form-group">
+                                        <label for="majorcategory">Select category (select one):</label>
+                                        <select class="form-control" id="majorcategory">
+                                            <option value="-1" selected>ALL</option>
+                                            @foreach (var item in ViewBag.servicesList)
+                                                    {
+                                                <option value="@item.ID">
+                                                    @item.Name
+                                                </option>
+                                                    }
+                                        </select>
+                                        <label style="padding-top:5%" for="subcategory"> Select sub - category(select one):</label>
+                                        <select class="form-control" id="subcategory" name="serviceCategoryID">
+                                            <option value="-1" selected>ALL</option>
+                                        </select>
+                                    </div>
+                                    @*</form>*@
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Price Range:</label>
+                                    @*<div id="slider"></div>*@
+                                    <input class="form-control" type="text" style="width: 100%" placeholder="Price Slider comes here" />
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="majorcategory">Change Location:</label>
+                                    <div class="input-group">
+                                        <div class="input-group-btn">
+                                            <input id="locationInput" type="text" class="form-control dropdown-toggle" data-toggle="dropdown" aria-label="..." placeholder="Select City">
+                                            @*<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Select City <span class="caret"></span></button>*@
+                                            <ul id="listofLocations" class="dropdown-menu scrollable-menu" role="menu">
+                                                <li><a href="#">Lahore</a></li>
+                                                <li><a href="#">Lahore</a></li>
+                                                <li><a href="#">Lahore</a></li>
+                                                <li><a href="#">Lahore</a></li>
+                                                <li><a href="#">Lahore</a></li>
+                                                <li><a href="#">Lahore</a></li>
+                                                <li><a href="#">Lahore</a></li>
+                                                <li><a href="#">Lahore</a></li>
+                                                <li><a href="#">Lahore</a></li>
+                                                <li><a href="#">Lahore</a></li>
+                                                <li><a href="#">Lahore</a></li>
+                                                <li><a href="#">Lahore</a></li>
+                                                <li><a href="#">Lahore</a></li>
+                                                <li><a href="#">Lahore</a></li>
+                                                <li><a href="#">Lahore</a></li>
+                                                <li><a href="#">Lahore</a></li>
+                                                <li><a href="#">Lahore</a></li>
+                                                <li><a href="#">Lahore</a></li>
+                                                <li><a href="#">Islamabad</a></li>
+                                                <li><a href="#">Karachi</a></li>
+                                            </ul>
+                                        </div><!-- /btn-group -->
+                                    </div>
+                                    <div class="input-group" style="padding-top:5%">
+                                        <div class="input-group-btn">
+                                            <input id="mohallaInput" type="text" class="form-control dropdown-toggle" data-toggle="dropdown" aria-label="..." placeholder="Select Area (return areas using Ajax)">
+                                            <ul id="listofMohallas" class="dropdown-menu scrollable-menu" role="menu">
+                                                <li><a href="#">G-11</a></li>
+                                                <li><a href="#">G-10</a></li>
+                                                <li><a href="#">G-9</a></li>
+                                                <li><a href="#">G-8</a></li>
+                                                <li><a href="#">G-8</a></li>
+                                                <li><a href="#">G-8</a></li>
+                                                <li><a href="#">G-8</a></li>
+                                                <li><a href="#">G-8</a></li>
+                                                <li><a href="#">G-8</a></li>
+                                                <li><a href="#">G-8</a></li>
+                                                <li><a href="#">G-8</a></li>
+                                                <li><a href="#">Blue Area</a></li>
+                                                <li><a href="#">Jinnah Supper</a></li>
+                                            </ul>
+                                        </div><!-- /btn-group -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="modal-footer">
+                            <button id="collapseSearchbtn" type="button" class="btn btn-default" data-dismiss="modal">Search!</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+<div class="container" style="padding-top:3%">
+    <div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-4 col-lg-4 col-md-4">
+            <div class="panel panel-default">
+                <div class="portfolio-box">
+                    <div class="row">
+                        <div class="panel-heading">
+                            <div class="col-md-3 text-center vcenter">
+                                <img class="media-object img-circle" width="80px" src="@item.profilePicURL" alt="...">
+                            </div><!--
+                        --><div class="col-md-9 vcenter">
+                                <h3 class="media-heading name-bold">@item.FullName</h3>
+                                <div class="row">
+                                    <div class="col-md-12 vertical-padding location-small-font">
+                                        <i class="fa fa-map-marker fa-lg text-primary"></i> @item.Address
+                                    </div>
+                                    <div class="col-md-5 vertical-padding">
+                                        <i class="fa fa-1x fa-star bounceIn text-primary"></i>
+                                        <i class="fa fa-1x fa-star bounceIn text-primary"></i>
+                                        <i class="fa fa-1x fa-star bounceIn text-primary"></i>
+                                        <i class="fa fa-1x fa-star bounceIn text-primary"></i>
+                                        <i class="fa fa-1x fa-star-half-empty bounceIn text-primary"></i>
+                                    </div>
+                                    <div class="col-md-7 vertical-padding">
+                                        <i class="fa fa-lg fa-money text-primary"></i>
+                                        Rs. @item.stats.avgRatePerHr /hour
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-box-caption">
+                        <div class="portfolio-box-caption-content">
+                            @Html.ActionLink("View Profile", "myProfile", "Profile", new { userID = @item.ID }, new { @id= item.ID , @class="project-name whitetext" } )
+                            @*<a href="#" class="project-name whitetext">
+                                View Profile
+                            </a>*@
+                            @*<a href="#" class="project-name whitetext" data-toggle="modal" data-target="#exampleModal" data-whatever="@@mdo">
+                                Hire me!
+                            </a>*@
+
+                            @*Message me pop-up*@
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form>
+                                                <div class="form-group">
+                                                    <label for="recipient-name" class="control-label">Recipient:</label>
+                                                    <input type="text" class="form-control" id="recipient-name" placeholder="Faizi...get name of user from DB and enter here automatically!">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="message-text" class="control-label">Message:</label>
+                                                    <textarea class="form-control" id="message-text"></textarea>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Send message</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="panel-footer text-center">
+                    @*<div class="media-heading">Services</div>*@
+                    @foreach (var servic in item.myServices)
+                    {
+                        <span data-toggle="tooltip" data-placement="bottom" title="Home Delivery | Click for details">
+                        <a tabindex="0" class="fa-stack fa-lg text-primary" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" title="@servic.providedService.Name" data-content="@servic.providedService.Description">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa @servic.providedService.icon fa-stack-1x fa-inverse"></i>
+                        </a>
+                        </span>
+                    }
+                </div>
+                                    
+            </div>
+        </div>
+    }
+
+        
+    </div>
+    <div class="row text-center">
+        <div class="col-md-12">
+            <nav>
+                <ul class="pagination">
+                    <li>
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li>
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

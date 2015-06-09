@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    $("#SearchFilterCollapse").slideUp();
+    $("#SearchFilterCollapse").hide();
 
     //Enable all popovers on page
     $('[data-toggle="popover"]').popover();
@@ -32,7 +32,40 @@
         $("#listofMohallas li a").click(function () {
             $("#mohallaInput").val($(this).text());
         });
+        
     });
+
+    $("#majorcategory").change(function () {
+        //console.log("hjhjkjhkjh");
+        populateSubServicesDropdown();
+    });
+
+    function populateSubServicesDropdown() {
+        var id = $("#majorcategory").val();
+        //console.log(id);
+        $.ajax({
+            type: "GET",
+            url: "/services/getSubServices",
+            data: { serviceId: id },
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                debugger;
+                var data = result;
+                //console.log(data[0].subServices[0].Name);
+                $("#subcategory").empty();
+                $("#subcategory").append('<option value="-1" selected>ALL</option>');
+                for (var i = 0; i < data[0].subServices.length; i++) {
+                    var str = '<option value="' + data[0].subServices[i].ID + '">' + data[0].subServices[i].Name + '</option>';
+                    $("#subcategory").append(str);
+                }
+            },
+            error: function (response) {
+                debugger;
+                console.log('eror' + response);
+            }
+        });
+    }
 
 
     //function collision($div1, $div2) {

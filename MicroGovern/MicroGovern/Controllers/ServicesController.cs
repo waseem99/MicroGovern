@@ -182,5 +182,36 @@ namespace MicroGovern.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+        public ActionResult ProvidersListFilter()
+        {
+            List<UserDetails> providers = db.usersdb.ToList();
+            ViewBag.servicesList = db.Services.ToList().Where(x => x.isleaf == false);
+            return View(providers);
+
+        }
+
+        
+        public ActionResult ProvidersList(String mainSearch="", int serviceCategoryID =-1, float minPrice=0, float maxPrice=9999999999)
+        {
+            List<UserDetails> providers = db.usersdb.ToList();
+
+            if (mainSearch.Length > 0 && mainSearch != "") {
+                providers = db.usersdb.Where(x => (x.FullName.Contains(mainSearch)) ||
+                                                                (x.Address.Contains(mainSearch)) ||
+                                                                (x.City.Contains(mainSearch)) ||
+                                                                (x.myServices.Where(y => y.providedService.Name.Contains(mainSearch)).Count() > 0)
+                                                                ).ToList();
+            }
+            if (serviceCategoryID != -1)
+                providers = providers.Where(x=> x.myServices.Where(y => y.providedService.ID == serviceCategoryID).Count() > 0).ToList();
+
+
+            ViewBag.servicesList = db.Services.ToList().Where(x => x.isleaf == false);
+            return View(providers);
+
+        }
+       
     }
 }

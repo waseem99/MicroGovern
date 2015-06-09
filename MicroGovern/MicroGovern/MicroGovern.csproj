@@ -247,6 +247,7 @@
     <Content Include="Content\img\portfolio\5.jpg" />
     <Content Include="Content\img\portfolio\6.jpg" />
     <Content Include="Content\ProfilePage.css" />
+    <Content Include="Content\SearchResult.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\font-awesome\css\font-awesome.css" />
     <Content Include="fonts\font-awesome\css\font-awesome.min.css" />
@@ -313,6 +314,8 @@
     <Content Include="Scripts\ProfilePage.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\ProvidersListResult.js" />
+    <Content Include="Scripts\SearchResult.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -364,6 +367,9 @@
     <Content Include="Views\Services\Index.cshtml" />
     <Content Include="Views\Services\CreateSubService.cshtml" />
     <Content Include="Views\Profile\myProfile_edit.cshtml" />
+    <Content Include="Views\Home\SearchResult.cshtml" />
+    <Content Include="Views\Home\SearchResult_ServiceProviders.cshtml" />
+    <Content Include="Views\Services\ProvidersList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
