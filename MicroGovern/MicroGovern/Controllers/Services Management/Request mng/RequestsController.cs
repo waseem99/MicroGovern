@@ -28,12 +28,12 @@ namespace MicroGovern.Controllers.Services_Management.Request_mng
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Request aRequest = db.Requests.Find(id);
-            if (aRequest == null)
+            Request Request = db.Requests.Find(id);
+            if (Request == null)
             {
                 return HttpNotFound();
             }
-            return View(aRequest);
+            return View(Request);
         }
 
         // GET: Requests/Create
