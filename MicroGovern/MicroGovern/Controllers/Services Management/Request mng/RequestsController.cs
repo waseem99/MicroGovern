@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using MicroGovern.Models;
 using MicroGovern.Models.Request_mng;
+using MicroGovern.Models.Responses_mng;
 
 namespace MicroGovern.Controllers.Services_Management.Request_mng
 {
@@ -123,6 +124,13 @@ namespace MicroGovern.Controllers.Services_Management.Request_mng
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        [HttpPost]
+        public ActionResult response()
+        {
+            return RedirectToAction("Create", "ResponsesController");
+
         }
     }
 }

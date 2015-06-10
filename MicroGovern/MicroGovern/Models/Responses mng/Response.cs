@@ -26,12 +26,19 @@ namespace MicroGovern.Models.Responses_mng
         [Display(Name = "Proposed Price")]
         public decimal ProposedPrice { get; set; }
 
-        [Display(Name = "Suitable Time Range")]
-        public TimeSpan ProposedWorkTimeRange { get; set; }
+        [Display(Name = "Suitable Start Time")]
+        public TimeSpan ProposedWorkStartTime { get; set; }
+
+        [Display(Name = "Suitable End Time")]
+        public TimeSpan ProposedWorkEndTime { get; set; }
+
+        public virtual ResponseUser respuser { get; set; }
+
+        public virtual ResponseRequest respreq { get; set; }
 
         public Response()
         {
-
+            BidPosted = DateTime.Now;
         }
     }
 
