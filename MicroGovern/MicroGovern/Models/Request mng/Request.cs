@@ -12,7 +12,7 @@ namespace MicroGovern.Models.Request_mng
 {
     public class Request
     {
-
+        public ARequestState reqstate { get; set; }
 
         [Key]
         public int ID { get; set; }
