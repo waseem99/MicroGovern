@@ -40,6 +40,11 @@ namespace MicroGovern.Models.Responses_mng
         {
             BidPosted = DateTime.Now;
         }
+
+        public virtual void Operation()
+        {
+
+        }
     }
 
     //Database Model

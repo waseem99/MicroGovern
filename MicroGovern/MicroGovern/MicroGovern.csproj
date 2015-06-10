@@ -217,18 +217,35 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Location\location.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Notifications\AUserNotifications.cs" />
+    <Compile Include="Models\Notifications\EmailNotifications.cs" />
+    <Compile Include="Models\Notifications\MobileNotifications.cs" />
+    <Compile Include="Models\Notifications\SMSNotifications.cs" />
     <Compile Include="Models\Profile\ProfileViewModel.cs" />
+    <Compile Include="Models\Request mng\ARequestState.cs" />
     <Compile Include="Models\Request mng\Request.cs" />
     <Compile Include="Models\Request mng\CommunityRequest.cs" />
     <Compile Include="Models\Request mng\CommunityRequestCreator.cs" />
     <Compile Include="Models\Request mng\PersonalRequest.cs" />
     <Compile Include="Models\Request mng\PersonalRequestCreator.cs" />
+    <Compile Include="Models\Request mng\RequestAwardedState.cs" />
+    <Compile Include="Models\Request mng\RequestBidsReceivedState.cs" />
+    <Compile Include="Models\Request mng\RequestCompletedState.cs" />
     <Compile Include="Models\Request mng\RequestCreator.cs" />
+    <Compile Include="Models\Request mng\RequestDeliveredState.cs" />
+    <Compile Include="Models\Request mng\RequestInitialState.cs" />
+    <Compile Include="Models\Request mng\RequestPaymentCompletedState.cs" />
+    <Compile Include="Models\Request mng\RequestReviewedState.cs" />
     <Compile Include="Models\Request mng\RequestService.cs" />
     <Compile Include="Models\Request mng\RequestUser.cs" />
+    <Compile Include="Models\Responses mng\HighRatedUserResponseDecorator.cs" />
+    <Compile Include="Models\Responses mng\NearestLocationUserResponseDecorator.cs" />
     <Compile Include="Models\Responses mng\Response.cs" />
+    <Compile Include="Models\Responses mng\ResponseADecorater.cs" />
     <Compile Include="Models\Responses mng\ResponseRequest.cs" />
     <Compile Include="Models\Responses mng\ResponseUser.cs" />
+    <Compile Include="Models\Responses mng\SponsoredUserResponseDecorator.cs" />
+    <Compile Include="Models\Responses mng\VerifiedUserResponseDecorator.cs" />
     <Compile Include="Models\Services mng\Service.cs" />
     <Compile Include="Models\Services mng\Service_load.cs" />
     <Compile Include="Models\UserDetails.cs" />
@@ -388,6 +405,7 @@
     <Content Include="Views\Locations\Edit.cshtml" />
     <Content Include="Views\Locations\Index.cshtml" />
     <Content Include="Views\Locations\Test.cshtml" />
+    <Content Include="Views\Home\ProfilePage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
