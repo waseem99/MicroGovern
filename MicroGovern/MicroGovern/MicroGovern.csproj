@@ -163,9 +163,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Location\LocationsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\Profile\ProfileController.cs" />
     <Compile Include="Controllers\Services Management\Request mng\RequestsController.cs" />
+    <Compile Include="Controllers\Services Management\Response mng\ResponsesController.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -213,6 +215,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Location\location.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Profile\ProfileViewModel.cs" />
     <Compile Include="Models\Request mng\Request.cs" />
@@ -222,6 +225,10 @@
     <Compile Include="Models\Request mng\PersonalRequestCreator.cs" />
     <Compile Include="Models\Request mng\RequestCreator.cs" />
     <Compile Include="Models\Request mng\RequestService.cs" />
+    <Compile Include="Models\Request mng\RequestUser.cs" />
+    <Compile Include="Models\Responses mng\Response.cs" />
+    <Compile Include="Models\Responses mng\ResponseRequest.cs" />
+    <Compile Include="Models\Responses mng\ResponseUser.cs" />
     <Compile Include="Models\Services mng\Service.cs" />
     <Compile Include="Models\Services mng\Service_load.cs" />
     <Compile Include="Models\UserDetails.cs" />
@@ -370,6 +377,17 @@
     <Content Include="Views\Home\SearchResult.cshtml" />
     <Content Include="Views\Home\SearchResult_ServiceProviders.cshtml" />
     <Content Include="Views\Services\ProvidersList.cshtml" />
+    <Content Include="Views\Responses\Create.cshtml" />
+    <Content Include="Views\Responses\Delete.cshtml" />
+    <Content Include="Views\Responses\Details.cshtml" />
+    <Content Include="Views\Responses\Edit.cshtml" />
+    <Content Include="Views\Responses\Index.cshtml" />
+    <Content Include="Views\Locations\Create.cshtml" />
+    <Content Include="Views\Locations\Delete.cshtml" />
+    <Content Include="Views\Locations\Details.cshtml" />
+    <Content Include="Views\Locations\Edit.cshtml" />
+    <Content Include="Views\Locations\Index.cshtml" />
+    <Content Include="Views\Locations\Test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -37,5 +37,9 @@ namespace MicroGovern.Models
         public System.Data.Entity.DbSet<MicroGovern.Models.Services_mng.Service> Services { get; set; }
 
         public System.Data.Entity.DbSet<MicroGovern.Models.Request_mng.Request> Requests { get; set; }
+
+        public System.Data.Entity.DbSet<MicroGovern.Models.Responses_mng.Response> Responses { get; set; }
+
+        public System.Data.Entity.DbSet<MicroGovern.Models.Location.location> Location { get; set; }
     }
 }

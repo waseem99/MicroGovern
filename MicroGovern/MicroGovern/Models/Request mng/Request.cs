@@ -10,7 +10,7 @@ using MicroGovern.Models.Request_mng;
 
 namespace MicroGovern.Models.Request_mng
 {
-    public abstract class Request
+    public class Request
     {
 
 
@@ -55,9 +55,13 @@ namespace MicroGovern.Models.Request_mng
         public Request()
         {
             this.RequestIniated = DateTime.Now;
-            this.WorkDueDate = DateTime.Now;
+           // this.WorkDueDate = DateTime.Now;
         }
 
+        // Request User Mapping 
+        public virtual RequestUser requser { get; set; }
+
+        //Request Service Mapping
         private ICollection<RequestService> _reqServices;
         public virtual ICollection<RequestService> reqServices
         {
