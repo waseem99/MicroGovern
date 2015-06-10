@@ -55,7 +55,8 @@ namespace MicroGovern.Models.Request_mng
         public Request()
         {
             this.RequestIniated = DateTime.Now;
-           // this.WorkDueDate = DateTime.Now;
+            //  this.WorkDueDate = DateTime.Now;
+           reqstate = null;
         }
 
         // Request User Mapping 
