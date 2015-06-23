@@ -41,5 +41,8 @@ namespace MicroGovern.Models
         public System.Data.Entity.DbSet<MicroGovern.Models.Responses_mng.Response> Responses { get; set; }
 
         public System.Data.Entity.DbSet<MicroGovern.Models.Location.location> Location { get; set; }
+        public System.Data.Entity.DbSet<MicroGovern.Models.Request_mng.ARequestState> ARequestStates { get; set; }
+
+        public System.Data.Entity.DbSet<MicroGovern.Models.Responses_mng.ResponseADecorater> ResponseADecoraters { get; set; }
     }
 }

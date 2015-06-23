@@ -6,7 +6,9 @@
     @Html.AntiForgeryToken()
 
     <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+            @Html.ActionLink("Request a Service", "Create", "Requests", routeValues: null, htmlAttributes: new { title = "Request a Service" })
+        </li>
         <li>
             @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "myProfile_edit", "Profile", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
@@ -17,9 +19,7 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Request a Service", "Create", "Requests", routeValues: null, htmlAttributes: new { title = "Request a Service" })
-        </li>
+        
         <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
         <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
